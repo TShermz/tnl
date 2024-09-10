@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+@media screen and (max-width: 732px){
+  .btn-group {
+    display:none;
+  }
+}
+
+@media screen and (min-width: 732px){
+  .form-select{
+    display: none
+  }
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.btn {
+  border: solid black 2px;
+  font-size: 1.25rem;
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  border-radius: 0;
+}
+.btn:hover {
+  background-color: rgb(227, 226, 226);
+  color: black;
+}
+
+.selected {
+  background-color: rgb(227, 226, 226);
+  color: black;
+}
+
+/* .homePageFilters {
+  width: 80%;
+} */

@@ -1,0 +1,26 @@
+.MuiTable-root {
+  background-color: rgb(177, 175, 175);
+  border: black;
+}
+
+.MuiToolbar-root, .MuiTableHead-root {
+  background-color: rgb(146, 144, 144);
+}
+
+tr,td {
+  border-width: 2px;
+}
+
+.broadcast-image {
+  width: auto;
+  height: auto;
+}
+
+#edit-button {
+  background-color: green;
+}
+
+#delete-button {
+  background-color: red;
+  width: 100%;
+}

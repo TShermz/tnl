@@ -1,0 +1,101 @@
+h3 {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+.matchups{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.matchup{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    border: black solid .1rem;
+    border-radius: .15rem;
+    box-shadow: 0.1rem 0.1rem black;
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 1rem;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: rgb(38, 38, 57);
+    border: black solid 1px;
+    border-radius: 1rem;
+    padding: auto 0 auto 0;
+    width: 8rem;
+    height: 2rem;
+}
+
+@media screen and (max-width: 954px){
+    .matchup{
+        font-size: .9rem;
+    }
+
+    .score {
+        width: 5.5rem;
+    }
+}
+
+@media screen and (max-width: 722px){
+    .matchup{
+        font-size: .85rem;
+    }
+
+    .score {
+        width: 4rem;
+    }
+}
+
+@media screen and (max-width: 636px){
+    .matchup{
+        font-size: .65rem;
+    }
+
+    .score {
+        width: 3rem;
+        height: 1.5rem;
+    }
+
+    .ranking {
+        font-size: .6rem;
+    }
+}
+
+.divider {
+    width: .5rem;
+    background-color: black;
+}
+
+.manager{
+    background-color: rgb(227, 226, 226);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .25rem .5rem .25rem .5rem;
+}
+
+.names {
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: left;
+    font-weight: bold;
+}
+
+.tie {
+    color: rgb(248, 244, 244);
+}
+
+.win {
+    color: rgb(25, 246, 17);
+}
+
+.loss {
+    color: rgb(253, 5, 5);
+}

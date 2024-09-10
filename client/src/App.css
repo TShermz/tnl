@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+
+#root {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+  background-color: rgb(190, 189, 189);
+  font-family: "Exo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+nav {
+  width: 100%;
+}
+main {
+  width: 100%;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.content-container {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  width: 70%;
+  margin: auto;
+  background-color: rgba(209, 180, 131, 0.985);
+  border-right: black solid 3px;
+  border-left: black solid 3px;
+  padding: 1rem 0 0 0;
+}
+
+
+.homePage {
+  margin: 0 auto 2rem auto;
+  width: 80%;
+}
+
+@media screen and (max-width: 1462px){
+  .content-container{
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1288px){
+  .content-container{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1148px){
+  .content-container{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 898px){
+  .homePage{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 722px){
+  .homePage{
+    width: 95%;
+  }
+}
+

@@ -1,0 +1,84 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  border: black solid 3px;
+  border-bottom: none;
+}
+
+.modal-body,
+.modal-header {
+  background-color: rgba(177, 171, 161, 0.858);
+  /* border: black solid 3px; */
+}
+.modal-body {
+  border-top: none;
+  border: black solid 3px;
+  border-bottom-left-radius: .33rem;
+  border-bottom-right-radius:.33rem;
+}
+
+.form {
+  padding: 1rem;
+}
+
+.form input,
+.form textarea {
+  font: inherit;
+  padding: 0.25rem;
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+.form-select {
+  background-color: white;
+  color: black;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.requiredInputs {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items:center; 
+  gap: 2rem;
+}
+
+#broadcastCount {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  width: 100%;
+}
+
+.broadcastCountLabel {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.optionalInputs {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.submitButton {
+  background-color: rgb(19, 118, 180);
+  border: black solid 1px;
+  width: 33%;
+  height: 5rem;
+}
+
+#deleteBroadcastButton { 
+  background-color: rgba(255, 0, 0, 0.688);
+  color: black;
+  margin-right: 1rem;
+}
+
+#keepBroadcastButton {
+  background-color: yellow;
+  color: black;
+}
