@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
 
 #root {
   display: flex;
@@ -69,44 +70,67 @@ main {
   padding: 1rem 0 0 0;
 }
 
-
 .homePage {
   margin: 0 auto 2rem auto;
   width: 80%;
 }
 
-.homePage h2, h3 {
+.homePage h2,
+h3 {
   color: white;
   font-weight: bold;
 }
 
-@media screen and (max-width: 1462px){
-  .content-container{
+#weeklyRecap + h3 {
+  font-weight: none;
+}
+
+#weeklyRecap + table,
+th,
+td {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
+
+th {
+  background-color: rgb(227, 226, 226);
+}
+
+p {
+  /* font-family: "EB Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: none;
+  font-style: normal; */
+  padding: 0 2rem 0 2rem;
+}
+
+@media screen and (max-width: 1462px) {
+  .content-container {
     width: 80%;
   }
 }
 
-@media screen and (max-width: 1288px){
-  .content-container{
+@media screen and (max-width: 1288px) {
+  .content-container {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 1148px){
-  .content-container{
+@media screen and (max-width: 1148px) {
+  .content-container {
     width: 100%;
   }
 }
 
-@media screen and (max-width: 898px){
-  .homePage{
+@media screen and (max-width: 898px) {
+  .homePage {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 722px){
-  .homePage{
+@media screen and (max-width: 722px) {
+  .homePage {
     width: 95%;
   }
 }
-

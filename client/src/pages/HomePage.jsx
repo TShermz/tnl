@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import PageContent from "../components/UI/PageContent";
+import { getWeeklyPost } from "../util/http";
 import { generalActions } from "../store/slices/generalSlice";
 import { sleeper_league_names } from "../util/constants";
 import { processMatchupsByWeek } from "../util/matchups";
@@ -71,6 +72,7 @@ function HomePage() {
   }
 
   if (matchups.data && rosters.data && users.data) {
+    getWeeklyPost("4ZF6KaZicK2yWOY0i2ILoh");
     content = (
       <div className="homePage">
         <h2>Week {selectedWeek}</h2>
@@ -89,6 +91,7 @@ function HomePage() {
           rosters={rosters.data}
           users={users.data}
         />
+        <div id="weeklyRecap"></div>
       </div>
     );
   }

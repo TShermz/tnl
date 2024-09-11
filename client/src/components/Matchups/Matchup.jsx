@@ -37,8 +37,6 @@ function Matchup({ matchup, rosters, users }) {
     ? user2[0].metadata.team_name
     : `Team ${user2[0].display_name}`;
 
-    console.log(manager1[0]);
-
     return (
     <div className="matchup">
       <div className="manager">
