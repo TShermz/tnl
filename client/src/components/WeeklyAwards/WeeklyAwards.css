@@ -48,13 +48,13 @@ h5 {
 }
 
 .topScore {
-  background-color: rgb(109, 237, 109);
+  background-color: rgb(137, 209, 137);
 }
 
 .lowestScore {
-  background-color: rgb(253, 62, 62);
+  background-color: rgb(243, 114, 114);
 }
 
 .biggestBeatdown {
-  background-color: orange;
+  background-color: rgb(249, 198, 103);
 }

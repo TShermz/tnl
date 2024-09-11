@@ -7,7 +7,7 @@
   width: 100%;
   min-height: 100vh;
   text-align: center;
-  background-color: rgb(190, 189, 189);
+  background-color: rgb(118, 116, 116);
   font-family: "Exo 2", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
@@ -63,7 +63,7 @@ main {
   min-height: 100vh;
   width: 70%;
   margin: auto;
-  background-color: rgba(209, 180, 131, 0.985);
+  background-color: rgba(43, 41, 39, 0.985);
   border-right: black solid 3px;
   border-left: black solid 3px;
   padding: 1rem 0 0 0;
@@ -73,6 +73,11 @@ main {
 .homePage {
   margin: 0 auto 2rem auto;
   width: 80%;
+}
+
+.homePage h2, h3 {
+  color: white;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 1462px){

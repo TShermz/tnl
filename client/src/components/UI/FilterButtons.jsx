@@ -54,7 +54,7 @@ export default function FilterButtons({ className, buttons, filterType }) {
         })}
       </ButtonGroup>
 
-      <Form.Select onChange={(e)=> handleClick(e.target.value)}>
+      <Form.Select value={currentFilterValue} onChange={(e)=> handleClick(e.target.value)}>
         {buttons.map((buttonLabel) => {
           return (
             <option
