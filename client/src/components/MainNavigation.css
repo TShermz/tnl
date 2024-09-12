@@ -10,6 +10,7 @@
 .navbar>.container {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   justify-content: center;
 }
 
@@ -46,6 +47,7 @@ a.navbar-nav {
   font-size: 1.25rem;
   color: white;
   text-decoration: inherit;
+  margin: auto 0 auto 0;
 }
 
 a.navbar-nav:hover {
@@ -54,10 +56,15 @@ a.navbar-nav:hover {
 
 button.navbar-toggler {
   background-color: white;
+  padding: .6rem;
 }
 
 button.navbar-toggler:hover {
   background-color: rgba(128, 128, 128, 0.671);
+}
+
+button.navbar-toggled.collapsed {
+  margin: auto 0 auto 0;
 }
 
 @media screen and (max-width: 992px){
