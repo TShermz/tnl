@@ -7,7 +7,7 @@ const initialGeneralState = {
   selectedWeek: null,
   selectedSeason: null,
   selectedMatchups: {},
-  selectedWeeklyAwards: []
+  selectedWeeklyAwards: [],
 };
 
 const generalSlice = createSlice({
@@ -17,16 +17,23 @@ const generalSlice = createSlice({
     setSelectedWeek(state, action) {
       state.selectedWeek = action.payload;
     },
-    setSelectedSeason(state, action){
+    setSelectedSeason(state, action) {
       state.selectedSeason = action.payload;
     },
-    setSelectedLeague(state, action){
+    setSelectedLeague(state, action) {
       state.selectedLeagueName = action.payload;
-      let league = sleeper_league_ids.filter(league =>{return league.name === action.payload});
+      let league = sleeper_league_ids.filter((league) => {
+        return league.name === action.payload;
+      });
       state.selectedLeagueId = league[0].id;
     },
-    setSelectedWeeklyAwards(state, action){
+    setSelectedWeeklyAwards(state, action) {
       state.selectedWeeklyAwards = action.payload;
+    },
+    adjustSelectedWeek(state, action) {
+      action.payload === "increment"
+        ? state.selectedWeek++
+        : state.selectedWeek--;
     },
   },
 });

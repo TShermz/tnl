@@ -9,9 +9,7 @@ import { queryClient } from "./util/http.js";
 import RootLayout from "./pages/Root.jsx";
 import Protected from "./pages/Protected.jsx";
 import HomePage from "./pages/HomePage.jsx";
-import MyLogs from "./pages/MyLogsPage.jsx";
-import MyBroadcastsPage from "./pages/MyBroadcastsPage.jsx";
-import EditCommonsPage from "./pages/EditCommonsPage.jsx";
+import WeeklyRecapPage from "./pages/WeeklyRecapPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
@@ -23,12 +21,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "mylogs",
-        element: (
-          <Protected>
-            <MyLogs />
-          </Protected>
-        ),
+        path: "weeklyrecap",
+        element: <WeeklyRecapPage />
       },
       // {
       //   path: "commons/:tier/edit",

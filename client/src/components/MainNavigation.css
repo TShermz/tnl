@@ -8,6 +8,8 @@
 }
 
 .navbar>.container {
+  display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
 }
 
@@ -37,4 +39,30 @@ img {
 
 .navbar-brand:focus, .navbar-brand:hover {
   color: white;
+}
+
+a.navbar-nav {
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: white;
+  text-decoration: inherit;
+}
+
+a.navbar-nav:hover {
+  color: orange;
+}
+
+button.navbar-toggler {
+  background-color: white;
+}
+
+button.navbar-toggler:hover {
+  background-color: rgba(128, 128, 128, 0.671);
+}
+
+@media screen and (max-width: 992px){
+  .navbar>.nav-row {
+    display: flex;
+    flex-flow: row nowrap;
+  }
 }

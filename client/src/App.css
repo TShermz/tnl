@@ -5,7 +5,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  /* width: 100%; */
+  width: 100%;
   min-height: 100vh;
   text-align: center;
   background-color: rgb(118, 116, 116);
@@ -75,10 +75,43 @@ main {
   width: 80%;
 }
 
+.weekSelector {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  color: white;
+}
+
+.weekSelector svg {
+  margin: .25rem 0 auto 0;
+}
+
+.weekSelector svg:hover {
+  color: orange;
+}
+
+.weekSelector .arrows {
+  width: 2rem;
+}
+
+.weekSelector .hide{
+  display: none;
+}
+
 .homePage h2,
 h3 {
   color: white;
   font-weight: bold;
+  margin: 0 1rem 1rem 1rem;
+}
+
+#weeklyRecap {
+  max-width: 100%;
+  margin: 0 auto 0 auto;
+}
+
+table {
+  max-width: 100%;
 }
 
 #weeklyRecap + h3 {
@@ -97,11 +130,16 @@ th {
   background-color: rgb(227, 226, 226);
 }
 
+td {
+  padding-top: none;
+}
+
 p {
   /* font-family: "EB Garamond", serif;
   font-optical-sizing: auto;
   font-weight: none;
   font-style: normal; */
+  font-size: .8rem;
   padding: 0 2rem 0 2rem;
 }
 

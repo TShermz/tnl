@@ -1,6 +1,6 @@
 import "./WeeklyAwards.css";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import SportsMmaIcon from "@mui/icons-material/SportsMma";
 import { weekly_awards } from "../../util/constants";
 import { managers } from "../../util/ManagerInfo";
@@ -46,8 +46,14 @@ function WeeklyAwards({ matchups, rosters, users }) {
     lowestScoreMatchup[0].manager1_score === lowestScore
       ? lowestScoreMatchup[0].manager1_roster_id
       : lowestScoreMatchup[0].manager2_roster_id;
-  let biggestBeatdownRosterId1 = topScoreMatchup[0].manager1_score === topScore ? topScoreMatchup[0].manager1_roster_id : topScoreMatchup[0].manager2_roster_id;
-  let biggestBeatdownRosterId2 = topScoreMatchup[0].manager1_score === topScore ? topScoreMatchup[0].manager1_roster_id : topScoreMatchup[0].manager2_roster_id;
+  let biggestBeatdownRosterId1 =
+    topScoreMatchup[0].manager1_score === topScore
+      ? topScoreMatchup[0].manager1_roster_id
+      : topScoreMatchup[0].manager2_roster_id;
+  let biggestBeatdownRosterId2 =
+    topScoreMatchup[0].manager1_score === topScore
+      ? topScoreMatchup[0].manager1_roster_id
+      : topScoreMatchup[0].manager2_roster_id;
 
   let topScoreManagerNames = getManagerNames(rosters, users, topScoreRosterId);
   let lowestScoreManagerNames = getManagerNames(
@@ -76,11 +82,17 @@ function WeeklyAwards({ matchups, rosters, users }) {
 
           <div className="awardData">
             <h5>Highest Score</h5>
-            <div className="points"> {topScore} pts</div>
-            <div>
-              {topScoreManagerNames.teamName} (
-              {topScoreManagerNames.managerName})
-            </div>
+            {topScore === 0 ? (
+              <div>No data available</div>
+            ) : (
+              <>
+                <div className="points"> {topScore} pts</div>
+                <div>
+                  {topScoreManagerNames.teamName} (
+                  {topScoreManagerNames.managerName})
+                </div>
+              </>
+            )}
           </div>
           <AttachMoneyIcon fontSize="large" />
         </div>
@@ -89,9 +101,23 @@ function WeeklyAwards({ matchups, rosters, users }) {
 
           <div className="awardData">
             <h5>Biggest Beatdown</h5>
-            <span className="points">+{biggestBeatdown.toFixed(2)} pts </span> 
-            <div>[{biggestBeatdownMatchup[0].manager1_score} - {biggestBeatdownMatchup[0].manager2_score}]</div>
-            <div>{biggestBeatdownManagerNames1.managerName} vs. {biggestBeatdownManagerNames2.managerName}</div>
+            {biggestBeatdown === 0 ? (
+              <div>No data available</div>
+            ) : (
+              <>
+                <span className="points">
+                  +{biggestBeatdown.toFixed(2)} pts{" "}
+                </span>
+                <div>
+                  [{biggestBeatdownMatchup[0].manager1_score} -{" "}
+                  {biggestBeatdownMatchup[0].manager2_score}]
+                </div>
+                <div>
+                  {biggestBeatdownManagerNames1.managerName} vs.{" "}
+                  {biggestBeatdownManagerNames2.managerName}
+                </div>
+              </>
+            )}
           </div>
           <SportsMmaIcon fontSize="large" />
         </div>
@@ -100,11 +126,17 @@ function WeeklyAwards({ matchups, rosters, users }) {
 
           <div className="awardData">
             <h5>Lowest Score</h5>
-            <div className="points">{lowestScore} pts</div>
-            <div>
-              {lowestScoreManagerNames.teamName} (
-              {lowestScoreManagerNames.managerName})
-            </div>
+            {lowestScore === 0 ? (
+              <div>No data available.</div>
+            ) : (
+              <>
+                <div className="points">{lowestScore} pts</div>
+                <div>
+                  {lowestScoreManagerNames.teamName} (
+                  {lowestScoreManagerNames.managerName})
+                </div>
+              </>
+            )}
           </div>
           <DeleteIcon fontSize="large" />
         </div>

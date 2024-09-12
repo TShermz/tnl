@@ -15,32 +15,28 @@ function MainNavigation() {
       {" "}
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand as={Link} to="/">
-            The National League
-          </Navbar.Brand>
-          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
-          {/* <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <NavDropdown title="Leaderboards" id="basic-nav-dropdown">
+          <div className="nav-row">
+            <Navbar.Brand as={Link} to="/">
+              The National League
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          </div>
+
+          <div>
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav as={Link} to="/weeklyrecap">
+                Weekly Recap
+              </Nav>
+              {/* <Nav className="me-auto">
+              <NavDropdown title="Weekly Recap" id="basic-nav-dropdown">
                 <NavDropdown.Item
                   as={Link}
-                  to="/leaderboard/treasuretrailpoints"
-                >
-                  Treasure Trail Points
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/leaderboard/overall">
-                  Broadcasts (Overall)
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/leaderboard/detailed">
-                  Broadcasts (Detailed)
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
+                  to="/weeklyrecap"
+                ></NavDropdown.Item>
               </NavDropdown>
-            </Nav>
-          </Navbar.Collapse> */}
+            </Nav> */}
+            </Navbar.Collapse>
+          </div>
         </Container>
       </Navbar>
     </>
