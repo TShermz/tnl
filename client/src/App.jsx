@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "weeklyrecap",
+        path: "/weeklyrecap",
         element: <WeeklyRecapPage />
       },
       // {
