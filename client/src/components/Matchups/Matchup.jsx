@@ -50,7 +50,6 @@ function Matchup({ matchup, rosters, users }) {
         </div>
         <div className={score1Classes}>{matchup.manager1_score}</div>
       </div>
-      <div className="divider"></div>
       <div className="manager">
         <div className={score2Classes}>{matchup.manager2_score}</div>
         <div className="names">

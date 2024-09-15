@@ -6,12 +6,20 @@
 .award {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 33%;
   border: 2px black solid;
   height: 8rem;
   font-size: 1rem;
+  color: white;
+  border-radius: 1rem;
+  margin: 0.25rem;
+  padding: 0 1rem 0 1rem;
+}
+
+.awardData {
+  margin-left: 1rem;
 }
 
 h5 {
@@ -19,18 +27,43 @@ h5 {
   margin: 0;
 }
 
-@media screen and (max-width: 1034px) {
+.points {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* @media screen and (max-width: 898px){
+  h5 {
+    font-size: 1rem;
+  }
+
+  .award {
+    font-size: .8rem;
+  }
+
+  .award svg {
+    margin-left: 1rem;
+  }
+
+  .awardData {
+    margin-right: 2rem;
+}
+} */
+
+
+@media screen and (max-width: 968px) {
   .awards {
     display: flex;
     flex-flow: column nowrap;
   }
 
   .award {
+    justify-content: space;
     width: 100%;
     height: 6rem;
     font-size: 0.9rem;
-    padding: .9rem 0 .9rem 0;
-    margin-bottom: .5rem;
+    /* padding: 0.9rem 0 0.9rem 0; */
+    margin-bottom: 0.5rem;
   }
 
   .biggestBeatdown {
@@ -42,19 +75,30 @@ h5 {
   }
 }
 
-.points {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
 
 .topScore {
-  background-color: rgb(137, 209, 137);
+  border: solid 2px rgb(137, 209, 137);
 }
 
 .lowestScore {
-  background-color: rgb(243, 114, 114);
+  border: solid 2px rgb(243, 114, 114);
 }
 
 .biggestBeatdown {
-  background-color: rgb(249, 198, 103);
+  border: solid 2px rgb(249, 198, 103);
+}
+
+
+
+.topScore.award > div > div.points {
+  color: rgb(137, 209, 137);
+
+}
+
+.biggestBeatdown.award > div > span {
+  color: rgb(249, 198, 103);
+}
+
+.lowestScore.award > div > div.points {
+  color: rgb(243, 114, 114);
 }

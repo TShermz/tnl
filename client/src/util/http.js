@@ -13,6 +13,7 @@ export const contentfulClient = contentful.createClient({
 export async function getWeeklyPost(entryID) {
   try {
     const entry = await contentfulClient.getEntry(entryID);
+    console.log(entry);
     const rawRichTextField = entry.fields.body;
     const renderedHtml = documentToHtmlString(rawRichTextField);
     document.getElementById("weeklyRecap").innerHTML = renderedHtml;

@@ -11,11 +11,10 @@ h3 {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  border: black solid 0.1rem;
+  border: white solid 1px;
   border-radius: 0.15rem;
-  box-shadow: 0.1rem 0.1rem black;
   width: 100%;
-  height: 4rem;
+  height: 5rem;
   margin-bottom: 1rem;
 }
 
@@ -24,8 +23,7 @@ h3 {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  background-color: rgba(43, 41, 39, 0.985);
-  border: black solid 1px;
+  color: black;
   border-radius: 1rem;
   padding: auto 0 auto 0;
   width: 8rem;
@@ -59,7 +57,8 @@ h3 {
 
   .score {
     width: 3rem;
-    height: 1.5rem;
+    height: 2rem;
+    font-size: .75rem;
   }
 
   .ranking {
@@ -67,17 +66,12 @@ h3 {
   }
 }
 
-.divider {
-  width: 0.5rem;
-  background-color: black;
-}
-
 .manager {
-  background-color: rgb(227, 226, 226);
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  color: white;
   padding: 0.25rem 0.5rem 0.25rem 0.5rem;
 }
 
@@ -86,6 +80,10 @@ h3 {
   flex-flow: column nowrap;
   justify-content: left;
   font-weight: bold;
+}
+
+.name {
+  font-weight: normal;
 }
 
 .tie {

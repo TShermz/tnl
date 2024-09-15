@@ -88,13 +88,15 @@ function WeeklyAwards({ matchups, rosters, users }) {
               <>
                 <div className="points"> {topScore} pts</div>
                 <div>
-                  {topScoreManagerNames.teamName} (
-                  {topScoreManagerNames.managerName})
+                  {topScoreManagerNames.teamName} 
                 </div>
+                ({topScoreManagerNames.managerName})
+
               </>
             )}
           </div>
           <AttachMoneyIcon fontSize="large" />
+
         </div>
         <div className="biggestBeatdown award">
           <SportsMmaIcon fontSize="large" />
@@ -120,6 +122,7 @@ function WeeklyAwards({ matchups, rosters, users }) {
             )}
           </div>
           <SportsMmaIcon fontSize="large" />
+
         </div>
         <div className="lowestScore award">
           <DeleteIcon fontSize="large" />
@@ -139,6 +142,7 @@ function WeeklyAwards({ matchups, rosters, users }) {
             )}
           </div>
           <DeleteIcon fontSize="large" />
+
         </div>
       </div>
     </div>

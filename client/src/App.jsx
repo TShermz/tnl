@@ -24,23 +24,6 @@ const router = createBrowserRouter([
         path: "/weeklyrecap",
         element: <WeeklyRecapPage />
       },
-      // {
-      //   path: "commons/:tier/edit",
-      //   element: (
-      //     <Protected>
-      //       <EditCommonsPage />
-      //     </Protected>
-      //   ),
-      // },
-      // {
-      //   path: 'mybroadcasts', 
-      //   children:[
-      //   {
-      //     index: true, 
-      //     element: <Protected><MyBroadcastsPage /></Protected>
-      //   },
-
-      // ]},
     ],
   },
 ]);

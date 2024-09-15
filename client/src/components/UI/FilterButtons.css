@@ -17,7 +17,8 @@
 }
 
 .btn {
-  border: solid black 2px;
+  border: solid white 2px;
+  background-color: #181a28;
   font-size: 1.25rem;
   font-family: "Exo 2", sans-serif;
   font-optical-sizing: auto;
@@ -26,16 +27,14 @@
   text-align: center;
   border-radius: 0;
 }
+
 .btn:hover {
   background-color: rgb(227, 226, 226);
   color: black;
+  border: none;
 }
 
 .selected {
   background-color: rgb(227, 226, 226);
   color: black;
 }
-
-/* .homePageFilters {
-  width: 80%;
-} */
