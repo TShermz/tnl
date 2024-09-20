@@ -1,6 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
 import * as contentful from "contentful";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
 export const queryClient = new QueryClient();
 
@@ -10,12 +9,11 @@ export const contentfulClient = contentful.createClient({
   accessToken: "hcOyfOg4L-jMO3T57kAN2jB5PcEn70tYq4EZImKEuwc",
 });
 
-export async function getWeeklyPost(entryID) {
+export async function getWeeklyRecaps() {
   try {
-    const entry = await contentfulClient.getEntry(entryID);
-    console.log(entry);
-    const rawRichTextField = entry.fields.body;
-    const renderedHtml = documentToHtmlString(rawRichTextField);
-    document.getElementById("weeklyRecap").innerHTML = renderedHtml;
+    // const entry = await contentfulClient.getEntry(entryID);
+    const response = await contentfulClient.getEntries();
+;
+    return response.items;
   } catch (error) {}
 }

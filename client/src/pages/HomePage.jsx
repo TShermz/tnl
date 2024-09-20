@@ -1,20 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import PageContent from "../components/UI/PageContent";
-import { generalActions } from "../store/slices/generalSlice";
 import { sleeper_league_names } from "../util/constants";
 import { processMatchupsByWeek } from "../util/matchups";
 import { getRosters, getUsers } from "../util/general";
 
-import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import WeekSelector from "../components/UI/WeekSelector";
 import FilterButtons from "../components/UI/FilterButtons";
 import Matchups from "../components/Matchups/Matchups";
 import ErrorBlock from "../components/UI/ErrorBlock";
 import WeeklyAwards from "../components/WeeklyAwards/WeeklyAwards";
 
 function HomePage() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const selectedWeek = useSelector((state) => state.general.selectedWeek);
   const selectedSeason = useSelector((state) => state.general.selectedSeason);
   const selectedLeagueName = useSelector(
@@ -23,9 +21,6 @@ function HomePage() {
   const selectedLeagueId = useSelector(
     (state) => state.general.selectedLeagueId
   );
-
-  const leftArrowClasses = selectedWeek === 1 ? "hide" : "";
-  const rightArrowClasses = selectedWeek === 14 ? "hide" : "";
 
   const matchups = useQuery({
     queryKey: [
@@ -51,10 +46,6 @@ function HomePage() {
     queryKey: ["users", selectedLeagueName],
     queryFn: () => getUsers({ leagueId: selectedLeagueId }),
   });
-
-  function adjustWeek(method) {
-    dispatch(generalActions.adjustSelectedWeek(method));
-  }
 
   let content;
 
@@ -82,31 +73,7 @@ function HomePage() {
 
   if (matchups.data && rosters.data && users.data) {
     content = (
-      <div className="homePage">
-        <div className="weekSelector">
-          <div className="arrows">
-            {
-              <KeyboardDoubleArrowLeftIcon
-                className={leftArrowClasses}
-                onClick={() => adjustWeek("decrement")}
-                fontSize="large"
-              />
-            }
-          </div>
-
-          <h2>Week {selectedWeek}</h2>
-          <div className="arrows">
-            <KeyboardDoubleArrowRightIcon
-              className={rightArrowClasses}
-              onClick={() => adjustWeek("increment")}
-              fontSize="large"
-            />
-          </div>
-        </div>
-        <FilterButtons
-          className="homePageFilters"
-          buttons={sleeper_league_names}
-        />
+      <>
         <WeeklyAwards
           matchups={matchups.data}
           rosters={rosters.data}
@@ -118,13 +85,24 @@ function HomePage() {
           rosters={rosters.data}
           users={users.data}
         />
-      </div>
+      </>
     );
   }
 
   return (
     <>
-      <PageContent>{content}</PageContent>
+      <PageContent>
+        <div className="homePage">
+          <WeekSelector />
+          <FilterButtons
+            className="homePageFilters"
+            buttons={sleeper_league_names}
+          />
+          <h3>Weekly Awards</h3>
+
+          {content}
+        </div>
+      </PageContent>
     </>
   );
 }

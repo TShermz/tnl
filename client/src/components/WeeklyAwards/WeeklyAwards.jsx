@@ -75,7 +75,6 @@ function WeeklyAwards({ matchups, rosters, users }) {
 
   return (
     <div className="weeklyAwards">
-      <h3>Weekly Awards</h3>
       <div className="awards">
         <div className="topScore award">
           <AttachMoneyIcon fontSize="large" />

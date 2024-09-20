@@ -1,0 +1,22 @@
+.weekSelector {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    color: white;
+  }
+  
+  .weekSelector svg {
+    margin: .25rem 0 auto 0;
+  }
+  
+  .weekSelector svg:hover {
+    color: orange;
+  }
+  
+  .weekSelector .arrows {
+    width: 2rem;
+  }
+  
+  .weekSelector .hide{
+    display: none;
+  }
