@@ -99,13 +99,21 @@ h3 {
 }
 
 @media screen and (max-width: 898px) {
-  .homePage {
+  /* .homePage {
     width: 90%;
-  }
+  } */
+
+  /* .content-container {
+    padding: 0 1rem 0 1rem;
+  } */
 }
 
 @media screen and (max-width: 722px) {
-  .homePage {
+  /* .homePage {
     width: 95%;
+  } */
+
+  .content-container {
+    padding: 0 .5rem 0 .5rem;
   }
 }
