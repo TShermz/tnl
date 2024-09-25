@@ -1,38 +1,43 @@
 import { useSelector } from "react-redux";
 import { sleeper_league_ids } from "./constants";
 import { managers } from "./ManagerInfo";
-import { getSleeperMatchups } from "./general";
+import { getSleeperMatchups } from "./sleeper";
 
-export async function processMatchupsByWeek({selectedWeek, selectedLeagueId, selectedLeagueName}) {
+export async function processAllMatchupsByWeek({selectedWeek}) {
   try {
-    const results = [];
     let tnlMatchups = [];
 
-    // sleeper_league_ids.forEach(async (league) => {
-    let leagueMatchups = [];
+    for(const league of sleeper_league_ids) {
+      let leagueMatchups = [];
+      let results = [];
 
-    let sleeperMatchups = await getSleeperMatchups(selectedLeagueId, selectedWeek);
+      let sleeperMatchups = await getSleeperMatchups(
+        league.id,
+        selectedWeek
+      );
 
-    sleeperMatchups.map((matchup) => {
-      let result = {
-        league_id: selectedLeagueId,
-        league_name: selectedLeagueName,
-        roster_id: matchup.roster_id,
-        matchup_id: matchup.matchup_id,
-        points: matchup.points,
-        // "max_points": 0, revisit later
-        result: "",
-      };
-      results.push(result);
-    });
+      sleeperMatchups.map((matchup) => {
+        let result = {
+          league_id: league.id,
+          league_name: league.name,
+          roster_id: matchup.roster_id,
+          matchup_id: matchup.matchup_id,
+          points: matchup.points,
+          // "max_points": 0, revisit later
+          result: "",
+        };
+        results.push(result);
+      });
 
-    //Determine matchup winners
-    for (let i = 1; i <= 5; i++) {
-      let matchup = calculateMatchupWinners(i, results);
-      leagueMatchups.push(matchup);
-    }
-
-    return { name: selectedLeagueName, matchups: leagueMatchups };
+      //Determine matchup winners
+      for (let i = 1; i <= 5; i++) {
+        let matchup = calculateMatchupWinners(i, results);
+        leagueMatchups.push(matchup);
+      }
+      // tnlMatchups.push({ name: league.name, matchups: leagueMatchups })
+      tnlMatchups[`${league.name}`] =  leagueMatchups;
+    };
+    return tnlMatchups;
   } catch (error) {
     console.error(error.message);
   }
@@ -67,6 +72,6 @@ export function calculateMatchupWinners(i, results) {
     manager2_roster_id,
     manager2_score: players[1].points,
     manager2_result: players[1].result,
-    score_differential
+    score_differential,
   };
 }

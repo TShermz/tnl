@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MainNavigation from "../components/MainNavigation";
 
-import { getNFLState } from "../util/general";
+import { getNFLState } from "../util/sleeper";
 import { generalActions } from "../store/slices/generalSlice";
 
 function RootLayout() {

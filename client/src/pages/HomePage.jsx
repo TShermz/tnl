@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
 import PageContent from "../components/UI/PageContent";
 import { sleeper_league_names } from "../util/constants";
-import { processMatchupsByWeek } from "../util/matchups";
-import { getRosters, getUsers } from "../util/general";
+import { processAllMatchupsByWeek } from "../util/matchups";
+import { getRosters, getUsers } from "../util/sleeper";
 
 import WeekSelector from "../components/UI/WeekSelector";
 import FilterButtons from "../components/UI/FilterButtons";
@@ -23,18 +23,8 @@ function HomePage() {
   );
 
   const matchups = useQuery({
-    queryKey: [
-      "tnl_matchups",
-      selectedWeek,
-      selectedSeason,
-      selectedLeagueName,
-    ],
-    queryFn: () =>
-      processMatchupsByWeek({
-        selectedWeek,
-        selectedLeagueId,
-        selectedLeagueName,
-      }),
+    queryKey: ["tnl_matchups", selectedWeek, selectedSeason],
+    queryFn: () => processAllMatchupsByWeek({ selectedWeek }),
   });
 
   const rosters = useQuery({

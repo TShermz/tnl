@@ -1,38 +1,43 @@
 import "./WeeklyAwards.css";
+import { useSelector } from "react-redux";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SportsMmaIcon from "@mui/icons-material/SportsMma";
 import { weekly_awards } from "../../util/constants";
 import { managers } from "../../util/ManagerInfo";
 
-import { getManagerNames } from "../../util/general";
+import { getManagerNames } from "../../util/sleeper";
 
 function WeeklyAwards({ matchups, rosters, users }) {
+  const selectedLeagueName = useSelector(
+    (state) => state.general.selectedLeagueName
+  );
+
   const topScore = Math.max(
-    ...matchups.matchups.map((o) =>
+    ...matchups[selectedLeagueName].map((o) =>
       o.manager1_score > o.manager2_score ? o.manager1_score : o.manager2_score
     )
   );
   const lowestScore = Math.min(
-    ...matchups.matchups.map((o) =>
+    ...matchups[selectedLeagueName].map((o) =>
       o.manager1_score < o.manager2_score ? o.manager1_score : o.manager2_score
     )
   );
 
   const biggestBeatdown = Math.max(
-    ...matchups.matchups.map((o) => o.score_differential)
+    ...matchups[selectedLeagueName].map((o) => o.score_differential)
   );
 
-  let topScoreMatchup = matchups.matchups.filter(
+  let topScoreMatchup = matchups[selectedLeagueName].filter(
     (matchup) =>
       matchup.manager1_score === topScore || matchup.manager2_score === topScore
   );
-  let lowestScoreMatchup = matchups.matchups.filter(
+  let lowestScoreMatchup = matchups[selectedLeagueName].filter(
     (matchup) =>
       matchup.manager1_score === lowestScore ||
       matchup.manager2_score === lowestScore
   );
-  let biggestBeatdownMatchup = matchups.matchups.filter(
+  let biggestBeatdownMatchup = matchups[selectedLeagueName].filter(
     (matchup) =>
       matchup.score_differential === biggestBeatdown ||
       matchup.score_differential === biggestBeatdown

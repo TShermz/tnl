@@ -1,8 +1,7 @@
 import "./Matchups.css";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { getRosters, getUsers } from "../../util/general";
-import { processMatchupsByWeek } from "../../util/matchups";
+import { getRosters, getUsers } from "../../util/sleeper";
 
 import Matchup from "./Matchup";
 import ErrorBlock from "../UI/ErrorBlock";
@@ -21,7 +20,7 @@ function Matchups({ matchups, rosters, users }) {
     <>
       <h3>Matchups</h3>
       <div className="matchups">
-        {matchups.matchups.map((matchup) => (
+        {matchups[selectedLeagueName].map((matchup) => (
           <Matchup
             key={matchup.matchup_id}
             matchup={matchup}
