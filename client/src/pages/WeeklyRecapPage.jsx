@@ -8,7 +8,7 @@ import PageContent from "../components/UI/PageContent";
 import FilterButtons from "../components/UI/FilterButtons";
 import WeekSelector from "../components/UI/WeekSelector";
 
-import { getWeeklyRecaps } from "../util/http";
+import { getWeeklyRecaps } from "../util/helpers/http";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { sleeper_league_names } from "../util/constants";
 

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import { sleeper_league_ids } from "./constants";
-import { managers } from "./ManagerInfo";
+import { sleeper_league_ids } from "../constants";
+import { managers } from "../ManagerInfo";
 import { getSleeperMatchups } from "./sleeper";
 
 export async function processAllMatchupsByWeek({selectedWeek}) {
@@ -23,7 +23,6 @@ export async function processAllMatchupsByWeek({selectedWeek}) {
           roster_id: matchup.roster_id,
           matchup_id: matchup.matchup_id,
           points: matchup.points,
-          // "max_points": 0, revisit later
           result: "",
         };
         results.push(result);

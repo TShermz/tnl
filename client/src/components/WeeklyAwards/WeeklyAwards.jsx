@@ -6,7 +6,7 @@ import SportsMmaIcon from "@mui/icons-material/SportsMma";
 import { weekly_awards } from "../../util/constants";
 import { managers } from "../../util/ManagerInfo";
 
-import { getManagerNames } from "../../util/sleeper";
+import { getManagerNames } from "../../util/helpers/sleeper";
 
 function WeeklyAwards({ matchups, rosters, users }) {
   const selectedLeagueName = useSelector(

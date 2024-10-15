@@ -1,7 +1,7 @@
 import "./Matchups.css";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { getRosters, getUsers } from "../../util/sleeper";
+import { getRosters, getUsers } from "../../util/helpers/sleeper";
 
 import Matchup from "./Matchup";
 import ErrorBlock from "../UI/ErrorBlock";

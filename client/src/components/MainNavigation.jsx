@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { queryClient } from "../util/http";
+import { queryClient } from "../util/helpers/http";
 
 function MainNavigation() {
   const navigate = useNavigate();
@@ -22,8 +22,11 @@ function MainNavigation() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
           </div>
 
-          <div>
+          <div className="pages">
             <Navbar.Collapse id="basic-navbar-nav">
+              <Nav as={Link} to="/standings">
+                Standings
+              </Nav>
               <Nav as={Link} to="/weeklyrecap">
                 Weekly Recap
               </Nav>

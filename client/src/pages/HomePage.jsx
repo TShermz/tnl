@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PageContent from "../components/UI/PageContent";
 import { sleeper_league_names } from "../util/constants";
-import { processAllMatchupsByWeek } from "../util/matchups";
-import { getRosters, getUsers } from "../util/sleeper";
+import { processAllMatchupsByWeek } from "../util/helpers/matchups";
+import { getAllRostersUsers } from "../util/helpers/sleeper";
 
 import WeekSelector from "../components/UI/WeekSelector";
 import FilterButtons from "../components/UI/FilterButtons";
@@ -27,20 +27,15 @@ function HomePage() {
     queryFn: () => processAllMatchupsByWeek({ selectedWeek }),
   });
 
-  const rosters = useQuery({
-    queryKey: ["rosters", selectedLeagueName],
-    queryFn: () => getRosters({ leagueId: selectedLeagueId }),
-  });
-
-  const users = useQuery({
-    queryKey: ["users", selectedLeagueName],
-    queryFn: () => getUsers({ leagueId: selectedLeagueId }),
+  const rostersUsers = useQuery({
+    queryKey: ["rosters-users"],
+    queryFn: getAllRostersUsers,
   });
 
   let content;
 
-  let isLoading = matchups.isLoading || rosters.isLoading || users.isLoading;
-  let isError = matchups.isError || rosters.isError || users.isError;
+  let isLoading = matchups.isLoading || rostersUsers.isLoading;
+  let isError = matchups.isError || rostersUsers.isError;
 
   if (isLoading) {
     content = (
@@ -61,19 +56,27 @@ function HomePage() {
     );
   }
 
-  if (matchups.data && rosters.data && users.data) {
+  if (matchups.data && rostersUsers.data) {
+    let selectedRostersUsers = rostersUsers.data.filter((league) => {
+      return selectedLeagueName === league.leagueName;
+    });
+
+    // let selectedUsers = users.data.filter((user) => {
+    //   return selectedLeagueName === user.league;
+    // });
+
     content = (
       <>
-        <WeeklyAwards
+        {/* <WeeklyAwards
           matchups={matchups.data}
-          rosters={rosters.data}
-          users={users.data}
-        />
+          rosters={selectedRostersUsers[0].rosters}
+          users={selectedRostersUsers[0].users}
+        /> */}
 
         <Matchups
           matchups={matchups.data}
-          rosters={rosters.data}
-          users={users.data}
+          rosters={selectedRostersUsers[0].rosters}
+          users={selectedRostersUsers[0].users}
         />
       </>
     );

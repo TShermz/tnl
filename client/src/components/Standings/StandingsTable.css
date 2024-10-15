@@ -1,0 +1,77 @@
+#standings {
+  background-color: #181a28;
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  width: 100%;
+}
+
+/* th {
+    background-color: white;
+    color: #181a28;
+    border-radius: 0;
+} */
+td,
+th {
+  color: white !important;
+}
+
+/* #standings > table > thead > tr > th:nth-child(4) > span {
+    color: white;
+} */
+
+#standings > table > thead > tr > th:nth-child(3) > span > svg {
+  color: white;
+}
+
+.Mui-active {
+  color: orange !important;
+}
+
+#standings > table > thead > tr > th > span:hover,
+#standings > table > thead > tr > th > svg:hover {
+  color: orange !important;
+}
+
+#standings > table > thead > tr > th > span > svg {
+    color: orange !important;
+}
+
+#standings > table > thead > tr > th > span > svg:hover {
+  color: orange !important;
+}
+
+.Mui-disabled.MuiIconButton-colorInherit.MuiIconButton-sizeMedium.css-zylse7-MuiButtonBase-root-MuiIconButton-root {
+  color: grey;
+}
+
+p.MuiTablePagination-displayedRows.css-levciy-MuiTablePagination-displayedRows,
+p.MuiTablePagination-selectLabel.css-pdct74-MuiTablePagination-selectLabel {
+  margin: auto;
+  padding: 0;
+}
+
+#standings > table > thead > tr > th {
+  font-weight: bold;
+  font-family: inherit;
+}
+
+#standings > table > tbody > tr > td {
+  font-family: inherit;
+}
+
+.stat {
+  font-size: .9rem !important;
+}
+
+.positive {
+  color:rgb(137, 209, 137) !important;
+}
+
+.negative {
+  color: rgb(243, 114, 114) !important;
+}
+
+
+

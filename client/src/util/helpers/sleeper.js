@@ -1,5 +1,5 @@
-import { managers } from "./ManagerInfo";
-import { sleeper_league_ids } from "./constants";
+import { managers } from "../ManagerInfo";
+import { sleeper_league_ids } from "../constants";
 
 //Get the current state of the NFL Season
 export async function getNFLState() {
@@ -20,10 +20,7 @@ export async function getNFLState() {
 }
 
 //Get users in a league (accessing team name)
-export async function getUsers({ leagueId }) {
-  // let sleeperUsers = [];
-
-  // sleeper_league_ids.foreEach(async (league) => {
+export async function getUsers(leagueId) {
   const url = `https://api.sleeper.app/v1/league/${leagueId}/users`;
   const response = await fetch(url);
 
@@ -32,17 +29,12 @@ export async function getUsers({ leagueId }) {
   }
 
   let users = await response.json();
-  // sleeperUsers.push(users);
-  // });
 
   return users;
 }
 
 //Get Rosters (good for matching roster_id to owner_id)/standings
-export async function getRosters({ leagueId }) {
-  // let sleeperRosters = [];
-
-  // sleeper_league_ids.foreEach(async (league) => {
+export async function getRosters(leagueId) {
   const url = `https://api.sleeper.app/v1/league/${leagueId}/rosters`;
   const response = await fetch(url);
 
@@ -51,9 +43,25 @@ export async function getRosters({ leagueId }) {
   }
 
   let rosters = await response.json();
-  // sleeperRosters.push(rosters);
-  // });
+  
   return rosters;
+}
+
+export async function getAllRostersUsers() {
+  let sleeperRostersUsers = [];
+
+  try {
+    for (const league of sleeper_league_ids) {
+      let rosters = await getRosters(league.id);
+      let users = await getUsers(league.id);
+
+      sleeperRostersUsers.push({ leagueName: league.name, rosters, users });
+    }
+
+    return sleeperRostersUsers;
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
 //gets one league's matchups for one week
@@ -70,7 +78,7 @@ export async function getSleeperMatchups(leagueId, week) {
 }
 
 export function getManagerNames(rosters, users, owner_id) {
-  //finds manager's sleeper roster baesd on sleeper id
+  //finds manager's sleeper roster based on sleeper id
   let managerRoster = rosters.filter((roster) => {
     return roster.roster_id === owner_id;
   });
