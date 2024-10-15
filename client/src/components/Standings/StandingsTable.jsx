@@ -69,7 +69,7 @@ function EnhancedTableHead(props) {
             key={headCell.id}
             align={headCell.numeric ? "right" : "left"}
             sortDirection={
-              orderBy === headCell.id && headCell.sortable ? order : false
+              orderBy === headCell.id ? order : false
             }
             colSpan={
               headCell.id === "teamName" || headCell.id === "leagueName" ? 2 : 1
@@ -111,8 +111,9 @@ export default function StandingsTable({ headCells, rostersUsers }) {
   const dispatch = useDispatch();
 
   const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === "asc";
-    setOrder(isAsc ? "desc" : "asc");
+    console.log('test')
+    const isAsc = orderBy === property && order === "desc";
+    setOrder(isAsc ? "asc" : "desc");
     setOrderBy(property);
   };
 
@@ -192,8 +193,6 @@ export default function StandingsTable({ headCells, rostersUsers }) {
                   Math.round((fpts - fpts_against) * 100) / 100;
                 row.settings["powerScore"] =
                   row.settings.wins * 200 + row.settings.fpts;
-
-                console.log(row.settings["differential"] > 0);
 
                 return (
                   <TableRow
