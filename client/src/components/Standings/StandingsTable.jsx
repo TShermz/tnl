@@ -129,16 +129,20 @@ export default function StandingsTable({ headCells, rostersUsers }) {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - standings.length) : 0;
 
-  const visibleRows = React.useMemo(
-    () =>
-      stableSort(standings, getComparator(order, orderBy)).slice(
-        page * rowsPerPage,
-        page * rowsPerPage + rowsPerPage
-      ),
-    [order, orderBy, page, rowsPerPage, standings]
-  );
+  // const visibleRows = React.useMemo(
+  //   () =>
+  //     stableSort(standings, getComparator(order, orderBy)).slice(
+  //       page * rowsPerPage,
+  //       page * rowsPerPage + rowsPerPage
+  //     ),
+  //   [order, orderBy, page, rowsPerPage, standings]
+  // );
+  const visibleRows = stableSort(standings, getComparator(order, orderBy)).slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  )
 
-  console.log(orderBy);
+  console.log('testing' + orderBy);
 
   return (
     <Box sx={{ width: "100%" }}>
