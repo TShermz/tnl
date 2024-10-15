@@ -138,6 +138,8 @@ export default function StandingsTable({ headCells, rostersUsers }) {
     [order, orderBy, page, rowsPerPage, standings]
   );
 
+  console.log(orderBy);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }} id="standings">
