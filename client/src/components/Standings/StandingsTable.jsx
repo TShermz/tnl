@@ -111,7 +111,6 @@ export default function StandingsTable({ headCells, rostersUsers }) {
   const dispatch = useDispatch();
 
   const handleRequestSort = (event, property) => {
-    console.log('test')
     const isAsc = orderBy === property && order === "desc";
     setOrder(isAsc ? "asc" : "desc");
     setOrderBy(property);
