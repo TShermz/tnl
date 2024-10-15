@@ -102,7 +102,7 @@ function EnhancedTableHead(props) {
 
 export default function StandingsTable({ headCells, rostersUsers }) {
   const [order, setOrder] = React.useState("desc");
-  const [orderBy, setOrderBy] = React.useState("wins");
+  const [orderBy, setOrderBy] = React.useState("powerScore");
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(true);
   const [rowsPerPage, setRowsPerPage] = React.useState(30);
@@ -190,9 +190,7 @@ export default function StandingsTable({ headCells, rostersUsers }) {
                   Math.round((fpts / ppts) * 1000) / 10;
                 row.settings["differential"] =
                   Math.round((fpts - fpts_against) * 100) / 100;
-                row.settings["powerScore"] =
-                  row.settings.wins * 200 + row.settings.fpts;
-                console.log(league[0].name)
+
                 return (
                   <TableRow
                     hover
