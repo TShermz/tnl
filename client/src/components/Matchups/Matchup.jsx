@@ -41,7 +41,7 @@ function Matchup({ matchup, rosters, users }) {
         <div className={score2Classes}>{matchup.manager2_score}</div>
         <div className="names">
           <div className="teamName">{manager2_names.teamName}</div>
-          <div className="name right">({manager1_names.managerName})</div>
+          <div className="name right">({manager2_names.managerName})</div>
         </div>
         <div className="ranking">
           {/* <div>#1</div> */}
