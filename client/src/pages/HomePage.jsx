@@ -67,11 +67,11 @@ function HomePage() {
 
     content = (
       <>
-        {/* <WeeklyAwards
+        <WeeklyAwards
           matchups={matchups.data}
           rosters={selectedRostersUsers[0].rosters}
           users={selectedRostersUsers[0].users}
-        /> */}
+        />
 
         <Matchups
           matchups={matchups.data}
