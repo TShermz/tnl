@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sleeper_league_ids } from "../../util/constants";
 
 const initialGeneralState = {
-  selectedLeagueName: "Lint Lickers",
-  selectedLeagueId: "1126967089417269248",
+  selectedLeagueName: "Jabronis",
+  currentWeek: null,
+  currentSeason: null,
   selectedWeek: null,
   selectedSeason: null,
   selectedMatchups: {},
@@ -14,18 +15,20 @@ const generalSlice = createSlice({
   name: "general",
   initialState: initialGeneralState,
   reducers: {
-    setSelectedWeek(state, action) {
-      state.selectedWeek = action.payload;
-    },
-    setSelectedSeason(state, action) {
-      state.selectedSeason = action.payload;
+    setCurrentNFLState(state, action){
+      state.currentWeek = action.payload.display_week;
+      state.currentSeason = action.payload.season;
+
+      //sets selected week to current week upon load
+      action.payload.display_week === 0 ? state.selectedWeek = 14 : state.selectedWeek = action.payload;
+      state.selectedSeason = action.payload.season;
     },
     setSelectedLeague(state, action) {
       state.selectedLeagueName = action.payload;
       let league = sleeper_league_ids.filter((league) => {
         return league.name === action.payload;
       });
-      state.selectedLeagueId = league[0].id;
+      // state.selectedLeagueId = league[0].id;
     },
     setSelectedWeeklyAwards(state, action) {
       state.selectedWeeklyAwards = action.payload;

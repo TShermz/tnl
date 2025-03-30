@@ -3,40 +3,31 @@ import { sleeper_league_ids } from "../constants";
 import { managers } from "../ManagerInfo";
 import { getSleeperMatchups } from "./sleeper";
 
-export async function processAllMatchupsByWeek({selectedWeek}) {
+export function processAllMatchupsByWeek({ selectedMatchups }) {
+  const selectedWeek = useSelector((state) => state.general.selectedWeek);
+
   try {
-    let tnlMatchups = [];
+    let leagueMatchups = [];
+    let results = [];
 
-    for(const league of sleeper_league_ids) {
-      let leagueMatchups = [];
-      let results = [];
+    selectedMatchups.leagueMatchups[selectedWeek - 1].map((matchup) => {
+      let result = {
+        league_name: selectedMatchups.leagueName,
+        roster_id: matchup.roster_id,
+        matchup_id: matchup.matchup_id,
+        points: matchup.points,
+        result: "",
+      };
+      results.push(result);
+    });
 
-      let sleeperMatchups = await getSleeperMatchups(
-        league.id,
-        selectedWeek
-      );
+    //Determine matchup winners
+    for (let i = 1; i <= 5; i++) {
+      let matchup = calculateMatchupWinners(i, results);
+      leagueMatchups.push(matchup);
+    }
 
-      sleeperMatchups.map((matchup) => {
-        let result = {
-          league_id: league.id,
-          league_name: league.name,
-          roster_id: matchup.roster_id,
-          matchup_id: matchup.matchup_id,
-          points: matchup.points,
-          result: "",
-        };
-        results.push(result);
-      });
-
-      //Determine matchup winners
-      for (let i = 1; i <= 5; i++) {
-        let matchup = calculateMatchupWinners(i, results);
-        leagueMatchups.push(matchup);
-      }
-      // tnlMatchups.push({ name: league.name, matchups: leagueMatchups })
-      tnlMatchups[`${league.name}`] =  leagueMatchups;
-    };
-    return tnlMatchups;
+    return leagueMatchups;
   } catch (error) {
     console.error(error.message);
   }

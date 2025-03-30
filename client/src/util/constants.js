@@ -5,9 +5,9 @@ export const sleeper_league_ids = [
 ];
 
 export const sleeper_league_names = [
-  "Lint Lickers",
-  "Knuckleheads",
   "Jabronis",
+  "Knuckleheads",
+  "Lint Lickers"
 ];
 
 export const weekly_awards = [

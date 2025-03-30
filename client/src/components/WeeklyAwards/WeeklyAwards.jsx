@@ -9,35 +9,31 @@ import { managers } from "../../util/ManagerInfo";
 import { getManagerNames } from "../../util/helpers/sleeper";
 
 function WeeklyAwards({ matchups, rosters, users }) {
-  const selectedLeagueName = useSelector(
-    (state) => state.general.selectedLeagueName
-  );
-
   const topScore = Math.max(
-    ...matchups[selectedLeagueName].map((o) =>
+    ...matchups.map((o) =>
       o.manager1_score > o.manager2_score ? o.manager1_score : o.manager2_score
     )
   );
   const lowestScore = Math.min(
-    ...matchups[selectedLeagueName].map((o) =>
+    ...matchups.map((o) =>
       o.manager1_score < o.manager2_score ? o.manager1_score : o.manager2_score
     )
   );
 
   const biggestBeatdown = Math.max(
-    ...matchups[selectedLeagueName].map((o) => o.score_differential)
+    ...matchups.map((o) => o.score_differential)
   );
 
-  let topScoreMatchup = matchups[selectedLeagueName].filter(
+  let topScoreMatchup = matchups.filter(
     (matchup) =>
       matchup.manager1_score === topScore || matchup.manager2_score === topScore
   );
-  let lowestScoreMatchup = matchups[selectedLeagueName].filter(
+  let lowestScoreMatchup = matchups.filter(
     (matchup) =>
       matchup.manager1_score === lowestScore ||
       matchup.manager2_score === lowestScore
   );
-  let biggestBeatdownMatchup = matchups[selectedLeagueName].filter(
+  let biggestBeatdownMatchup = matchups.filter(
     (matchup) =>
       matchup.score_differential === biggestBeatdown ||
       matchup.score_differential === biggestBeatdown

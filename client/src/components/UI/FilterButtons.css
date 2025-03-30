@@ -31,7 +31,7 @@
 .btn:hover {
   background-color: rgb(227, 226, 226);
   color: black;
-  border: none;
+  border-color: white;
 }
 
 .selected {

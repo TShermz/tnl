@@ -1,7 +1,6 @@
 import "./Matchups.css";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { getRosters, getUsers } from "../../util/helpers/sleeper";
 
 import Matchup from "./Matchup";
 import ErrorBlock from "../UI/ErrorBlock";
@@ -12,15 +11,13 @@ function Matchups({ matchups, rosters, users }) {
   const selectedLeagueName = useSelector(
     (state) => state.general.selectedLeagueName
   );
-  const selectedLeagueId = useSelector(
-    (state) => state.general.selectedLeagueId
-  );
+  //filter out by currently selected League
 
   return (
     <>
       <h3>Matchups</h3>
       <div className="matchups">
-        {matchups[selectedLeagueName].map((matchup) => (
+        {matchups.map((matchup) => (
           <Matchup
             key={matchup.matchup_id}
             matchup={matchup}

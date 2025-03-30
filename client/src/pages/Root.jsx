@@ -1,33 +1,41 @@
 import { Outlet, useLoaderData, useSubmit } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueries } from "@tanstack/react-query";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MainNavigation from "../components/MainNavigation";
 
-import { getNFLState } from "../util/helpers/sleeper";
+import { getNFLState, getAllRostersUsers, getAllSleeperMatchups, getAllPlayoffs } from "../util/helpers/sleeper";
 import { generalActions } from "../store/slices/generalSlice";
+import { matchupsActions } from "../store/slices/matchupsSlice";
 
 function RootLayout() {
-  // const token = useLoaderData();
   const dispatch = useDispatch();
 
   let content;
 
-  const nflState = useQuery({
-    queryKey: ["nflState"],
-    queryFn: getNFLState,
+  //implement useQueries for all raw queries from Sleeper; no modifications to data
+  const results = useQueries({
+    queries: [
+      { queryKey: ["nflState"], queryFn: getNFLState },
+      { queryKey: ["sleeperMatchups"], queryFn: getAllSleeperMatchups},
+      { queryKey: ["sleeperPlayoffs"], queryFn: getAllPlayoffs },
+      { queryKey: ["sleeperRostersUsers"], queryFn: getAllRostersUsers },
+    ],
   });
 
-  if (nflState.isLoading) {
+  const isLoading = results.some((result) => result.isLoading);
+  const isError = results.some((result) => result.isError);
+
+  if (isLoading) {
     content = (
       <div>
         <p>Loading...</p>
       </div>
     );
-  };
+  }
 
-  if (nflState.isError) {
+  if (isError) {
     content = (
       <div>
         <ErrorBlock
@@ -36,35 +44,39 @@ function RootLayout() {
         />
       </div>
     );
-  };
+  }
 
-  if (nflState.data) {
-    dispatch(generalActions.setSelectedWeek(nflState.data.display_week));
-    dispatch(generalActions.setSelectedSeason(nflState.data.season));
+  if (!isLoading) {
+    const [nflStateData, sleeperMatchupsData, sleeperPlayoffsData, rostersUsersData] = results.map(
+      (result) => result.data
+    );
+    dispatch(generalActions.setCurrentNFLState(nflStateData));
+    // dispatch(matchupsActions.setSleeperMatchups(sleeperMatchupsData));
+    dispatch(matchupsActions.setSleeperPlayoffs(sleeperPlayoffsData));
+
+    //create a function for combining rosters, users, and Manager Info
+    //dispatch the resulting array of manager data
+
+    //calculate TNL Matchups and Hall of Fame; return an object with Matchups and Hall of Fame
+    //dispatch TNL Matchups; dispatch Hall of Fame
 
     content = (
       <>
-        <MainNavigation />
         <main>
-          {/* {navigation.state === 'loading' && <p>Loading...</p>} */}
           <Outlet />
         </main>
       </>
     );
   }
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     return;
-  //   }
+  return (
+    <>
+      <MainNavigation />
 
-  //   if(token === 'EXPIRED'){
-  //     submit(null, {action:'/logout', method: 'POST'})
-  //   }
-
-  // }, [token, submit]);
-
-  return content;
+      {content}
+    </>
+  );
 }
 
 export default RootLayout;
+
