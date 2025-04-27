@@ -1,6 +1,7 @@
 import "../components/Standings/StandingsTable.css";
 
 import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
 import { getAllRostersUsers } from "../util/helpers/sleeper";
 import { standingsTableHeaders } from "../util/constants";
 
@@ -13,6 +14,10 @@ export default function StandingsPage() {
     queryKey: ["rosters-users"],
     queryFn: getAllRostersUsers,
   });
+
+  const currentSeason = useSelector(
+    (state) => state.general.currentSeason
+  );
 
   let content, standings;
 
@@ -36,10 +41,11 @@ export default function StandingsPage() {
   }
 
   if (rostersUsers.data) {
+    console.log(rostersUsers.data[currentSeason])
     content = (
       <StandingsTable
         headCells={standingsTableHeaders}
-        rostersUsers={rostersUsers.data}
+        rostersUsers={rostersUsers.data[currentSeason]}
       />
     );
   }

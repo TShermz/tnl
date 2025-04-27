@@ -4,6 +4,12 @@ export const sleeper_league_ids = [
   { name: "Jabronis", id: "1128412463579484160" },
 ];
 
+export const sleeper_league_ids_new = [
+  {"Lint Lickers": "1126967089417269248"},
+  {"Knuckleheads":"1128412178291253248"},
+  {"Jabronis":"1128412463579484160"},
+];
+
 export const sleeper_league_names = [
   "Jabronis",
   "Knuckleheads",

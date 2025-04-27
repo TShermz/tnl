@@ -84,16 +84,19 @@ export async function getSleeperPlayoffs(leagueId) {
 
 export async function getAllRostersUsers() {
   let sleeperRostersUsers = [];
+  let final = [];
 
   try {
     for (const league of sleeper_league_ids) {
       let rosters = await getSleeperRosters(league.id);
       let users = await getSleeperUsers(league.id);
 
-      sleeperRostersUsers.push({ leagueName: league.name, rosters, users });
+      // sleeperRostersUsers.push({ leagueName: league.name, rosters, users });
+      sleeperRostersUsers[league.name] = {rosters, users};
     }
+    final[2025] = sleeperRostersUsers;
 
-    return sleeperRostersUsers;
+    return final;
   } catch (error) {
     console.error(error.message);
   }
