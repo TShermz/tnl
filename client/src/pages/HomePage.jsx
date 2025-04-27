@@ -13,11 +13,12 @@ import ErrorBlock from "../components/UI/ErrorBlock";
 import WeeklyAwards from "../components/WeeklyAwards/WeeklyAwards";
 
 function HomePage() {
-  // const dispatch = useDispatch();
-  const selectedWeek = useSelector((state) => state.general.selectedWeek);
-  const selectedSeason = useSelector((state) => state.general.selectedSeason);
   const selectedLeagueName = useSelector(
     (state) => state.general.selectedLeagueName
+  );
+
+  const currentSeason = useSelector(
+    (state) => state.general.currentSeason
   );
 
   const sleeperMatchups = useQuery({
@@ -55,9 +56,12 @@ function HomePage() {
   }
 
   if (sleeperMatchups.data && rostersUsers.data) {
-    let selectedRostersUsers = rostersUsers.data.filter((league) => {
-      return selectedLeagueName === league.leagueName;
-    });
+    // let selectedRostersUsers = rostersUsers.data.filter((league) => {
+    //   console.log(league[selectedLeagueName])
+    //   return selectedLeagueName === league.leagueName;
+    // });
+    let selectedRostersUsers = rostersUsers.data[currentSeason][selectedLeagueName];
+    console.log(selectedRostersUsers)
 
     let selectedMatchups = sleeperMatchups.data.filter((league) => {
       return selectedLeagueName === league.leagueName;
@@ -76,13 +80,13 @@ function HomePage() {
         {/* Once the useQuery is instituted, need to select the specific week and year in here */}
         <WeeklyAwards
           matchups={tnlMatchups}
-          rosters={selectedRostersUsers[0].rosters}
-          users={selectedRostersUsers[0].users}
+          rosters={selectedRostersUsers.rosters}
+          users={selectedRostersUsers.users}
         />
         <Matchups
           matchups={tnlMatchups}
-          rosters={selectedRostersUsers[0].rosters}
-          users={selectedRostersUsers[0].users}
+          rosters={selectedRostersUsers.rosters}
+          users={selectedRostersUsers.users}
         />
       </>
       // ) : (

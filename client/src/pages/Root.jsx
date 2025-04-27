@@ -14,7 +14,6 @@ function RootLayout() {
 
   let content;
 
-  //implement useQueries for all raw queries from Sleeper; no modifications to data
   const results = useQueries({
     queries: [
       { queryKey: ["nflState"], queryFn: getNFLState },
@@ -50,8 +49,8 @@ function RootLayout() {
     const [nflStateData, sleeperMatchupsData, sleeperPlayoffsData, rostersUsersData] = results.map(
       (result) => result.data
     );
+
     dispatch(generalActions.setCurrentNFLState(nflStateData));
-    // dispatch(matchupsActions.setSleeperMatchups(sleeperMatchupsData));
     dispatch(matchupsActions.setSleeperPlayoffs(sleeperPlayoffsData));
 
     //create a function for combining rosters, users, and Manager Info

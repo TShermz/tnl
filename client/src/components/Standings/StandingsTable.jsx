@@ -170,13 +170,12 @@ export default function StandingsTable({ headCells, rostersUsers }) {
                   return league.id === row.league_id;
                 });
 
-                let selectedRostersUsers = rostersUsers.filter((rosterUser) => {
-                  return rosterUser.leagueName === league[0].name;
-                });
+                let selectedRostersUsers = rostersUsers[league[0].name];
+                console.log(selectedRostersUsers)
 
                 let managerNames = getManagerNames(
-                  selectedRostersUsers[0].rosters,
-                  selectedRostersUsers[0].users,
+                  selectedRostersUsers.rosters,
+                  selectedRostersUsers.users,
                   row.roster_id
                 );
 
