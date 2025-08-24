@@ -10,14 +10,14 @@ import StandingsTable from "../components/Standings/StandingsTable";
 import ErrorBlock from "../components/UI/ErrorBlock";
 
 export default function StandingsPage() {
-  const rostersUsers = useQuery({
-    queryKey: ["rosters-users"],
-    queryFn: getAllRostersUsers,
-  });
-
   const currentSeason = useSelector(
     (state) => state.general.currentSeason
   );
+
+    const rostersUsers = useQuery({
+    queryKey: ["rosters-users"],
+    queryFn: () => getAllRostersUsers({currentSeason}),
+  });
 
   let content, standings;
 
@@ -41,11 +41,11 @@ export default function StandingsPage() {
   }
 
   if (rostersUsers.data) {
-    console.log(rostersUsers.data[currentSeason])
     content = (
       <StandingsTable
         headCells={standingsTableHeaders}
         rostersUsers={rostersUsers.data[currentSeason]}
+        currentSeason={currentSeason}
       />
     );
   }

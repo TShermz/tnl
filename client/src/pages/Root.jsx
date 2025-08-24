@@ -3,6 +3,8 @@ import { useQuery, useQueries } from "@tanstack/react-query";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+
 import MainNavigation from "../components/MainNavigation";
 
 import { getNFLState, getAllRostersUsers, getAllSleeperMatchups, getAllPlayoffs } from "../util/helpers/sleeper";
@@ -11,15 +13,16 @@ import { matchupsActions } from "../store/slices/matchupsSlice";
 
 function RootLayout() {
   const dispatch = useDispatch();
+  const currentSeason = useSelector((state) => state.general.currentSeason);
 
   let content;
 
   const results = useQueries({
     queries: [
       { queryKey: ["nflState"], queryFn: getNFLState },
-      { queryKey: ["sleeperMatchups"], queryFn: getAllSleeperMatchups},
-      { queryKey: ["sleeperPlayoffs"], queryFn: getAllPlayoffs },
-      { queryKey: ["sleeperRostersUsers"], queryFn: getAllRostersUsers },
+      { queryKey: ["sleeperMatchups"], queryFn: () => getAllSleeperMatchups({currentSeason})},
+      { queryKey: ["sleeperPlayoffs"], queryFn: () => getAllPlayoffs({currentSeason})},
+      { queryKey: ["sleeperRostersUsers"], queryFn: () => getAllRostersUsers({currentSeason}) },
     ],
   });
 

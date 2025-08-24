@@ -100,13 +100,13 @@ function EnhancedTableHead(props) {
   );
 }
 
-export default function StandingsTable({ headCells, rostersUsers }) {
+export default function StandingsTable({ headCells, rostersUsers, currentSeason }) {
   const [order, setOrder] = React.useState("desc");
   const [orderBy, setOrderBy] = React.useState("powerScore");
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(true);
   const [rowsPerPage, setRowsPerPage] = React.useState(30);
-  let standings = getStandings(rostersUsers);
+  let standings = getStandings({rostersUsers, currentSeason});
 
   const dispatch = useDispatch();
 
@@ -166,7 +166,7 @@ export default function StandingsTable({ headCells, rostersUsers }) {
             />
             <TableBody>
               {visibleRows.map((row, index) => {
-                let league = sleeper_league_ids.filter((league) => {
+                let league = sleeper_league_ids[currentSeason].filter((league) => {
                   return league.id === row.league_id;
                 });
 

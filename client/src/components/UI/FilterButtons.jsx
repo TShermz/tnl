@@ -11,27 +11,9 @@ export default function FilterButtons({ className, buttons, filterType }) {
     (state) => state.general.selectedLeagueName
   );
 
-  // if (filterType === "log") {
-  //   currentFilterValue = useSelector((state) => state.myLogs.currentLogFilter);
-  // } else if (filterType === "myBroadcasts") {
-  //   currentFilterValue = useSelector((state) => state.myBroadcasts.myBroadcastsFilter);
-  // } else if (filterType === "broadcastForm") {
-  //   currentFilterValue = useSelector(
-  //     (state) => state.broadcastForm.currentBroadcastFormFilter
-  //   );
-  //   broadcastFormActions.filterBroadcastForm(currentFilterValue);
-  // }
-
   const classes = `${className} btn-group`;
 
   function handleClick(filterValue) {
-    // if (filterType === "log") {
-    //   dispatch(myLogsActions.filterLog({ filterValue }));
-    // } else if (filterType === "myBroadcasts") {
-    //   dispatch(myBroadcastsActions.filterMyBroadcasts({ filterValue }));
-    // } else if (filterType === "broadcastForm") {
-    //   dispatch(broadcastFormActions.filterBroadcastForm({ filterValue }));
-    // }
     dispatch(generalActions.setSelectedLeague(filterValue));
   }
 

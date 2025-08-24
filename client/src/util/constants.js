@@ -1,20 +1,20 @@
-export const sleeper_league_ids = [
-  { name: "Lint Lickers", id: "1126967089417269248" },
-  { name: "Knuckleheads", id: "1128412178291253248" },
-  { name: "Jabronis", id: "1128412463579484160" },
-];
+export const sleeper_league_ids = {
+  2024: [
+    { name: "Lint Lickers", id: "1126967089417269248" },
+    { name: "Knuckleheads", id: "1128412178291253248" },
+    { name: "Jabronis", id: "1128412463579484160" },
+  ],
+  2025: [
+    { name: "Golden Goats", id: "1260829247371489280" },
+    { name: "Silver Sharks", id: "1260830488965165056" },
+    { name: "Bronze Bears", id: "1260830810236260352" },
+  ],
+};
 
-export const sleeper_league_ids_new = [
-  {"Lint Lickers": "1126967089417269248"},
-  {"Knuckleheads":"1128412178291253248"},
-  {"Jabronis":"1128412463579484160"},
-];
-
-export const sleeper_league_names = [
-  "Jabronis",
-  "Knuckleheads",
-  "Lint Lickers"
-];
+export const sleeper_league_names = {
+  2024: ["Jabronis", "Knuckleheads", "Lint Lickers"],
+  2025: ["Golden Goats", "Silver Sharks", "Bronze Bears"]
+};
 
 export const weekly_awards = [
   "Highest Score",

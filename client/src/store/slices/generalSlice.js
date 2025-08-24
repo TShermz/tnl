@@ -4,8 +4,8 @@ import { sleeper_league_ids } from "../../util/constants";
 const initialGeneralState = {
   selectedLeagueName: "Jabronis",
   currentWeek: null,
-  currentSeason: null,
-  selectedWeek: null,
+  currentSeason: 2024,
+  selectedWeek: 14,
   selectedSeason: null,
   selectedMatchups: {},
   selectedWeeklyAwards: [],
@@ -17,15 +17,16 @@ const generalSlice = createSlice({
   reducers: {
     setCurrentNFLState(state, action){
       state.currentWeek = action.payload.display_week;
-      state.currentSeason = action.payload.season;
+      // state.currentSeason = action.payload.season;
 
       //sets selected week to current week upon load
-      action.payload.display_week === 0 ? state.selectedWeek = 14 : state.selectedWeek = action.payload;
+      // action.payload.display_week === 0 ? state.selectedWeek = 14 : state.selectedWeek = action.payload;
+
       state.selectedSeason = action.payload.season;
     },
     setSelectedLeague(state, action) {
       state.selectedLeagueName = action.payload;
-      let league = sleeper_league_ids.filter((league) => {
+      let league = sleeper_league_ids[state.currentSeason].filter((league) => {
         return league.name === action.payload;
       });
       // state.selectedLeagueId = league[0].id;

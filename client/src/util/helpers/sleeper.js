@@ -82,19 +82,18 @@ export async function getSleeperPlayoffs(leagueId) {
 
 //Get Rosters (good for matching roster_id to owner_id)/standings
 
-export async function getAllRostersUsers() {
+export async function getAllRostersUsers({currentSeason}) {
   let sleeperRostersUsers = {};
   let final = {};
 
   try {
-    for (const league of sleeper_league_ids) {
+    for (const league of sleeper_league_ids[currentSeason]) {
       let rosters = await getSleeperRosters(league.id);
       let users = await getSleeperUsers(league.id);
 
-      // sleeperRostersUsers.push({ leagueName: league.name, rosters, users });
       sleeperRostersUsers[league.name] = {rosters, users};
     }
-    final['2025'] = sleeperRostersUsers;
+    final[currentSeason] = sleeperRostersUsers;
 
     return final;
   } catch (error) {
@@ -102,11 +101,11 @@ export async function getAllRostersUsers() {
   }
 }
 
-export async function getAllSleeperMatchups () {
+export async function getAllSleeperMatchups ({currentSeason}) {
   let sleeperMatchups = [];
 
   try {
-    for (const league of sleeper_league_ids){
+    for (const league of sleeper_league_ids[currentSeason]){
       let leagueMatchups = [];
       for(let i = 1; i < 15; i++){
         let weekMatchups = await getSleeperMatchups(league.id, i);  
@@ -121,11 +120,11 @@ export async function getAllSleeperMatchups () {
   }
 }
 
-export async function getAllPlayoffs () {
+export async function getAllPlayoffs ({currentSeason}) {
   let sleeperPlayoffs = [];
 
   try {
-    for (const league of sleeper_league_ids){
+    for (const league of sleeper_league_ids[currentSeason]){
       let playoffs = await getSleeperPlayoffs(league.id);
       sleeperPlayoffs.push({leagueName: league.name, playoffs});
     }

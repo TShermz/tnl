@@ -23,12 +23,12 @@ function HomePage() {
 
   const sleeperMatchups = useQuery({
     queryKey: ["sleeperMatchups"],
-    queryFn: getAllSleeperMatchups,
+    queryFn: () => getAllSleeperMatchups({currentSeason}),
   });
   
   const rostersUsers = useQuery({
     queryKey: ["sleeperRostersUsers"],
-    queryFn: getAllRostersUsers,
+    queryFn: () => getAllRostersUsers({currentSeason}),
   });
 
   let content;
@@ -60,8 +60,8 @@ function HomePage() {
     //   console.log(league[selectedLeagueName])
     //   return selectedLeagueName === league.leagueName;
     // });
+
     let selectedRostersUsers = rostersUsers.data[currentSeason][selectedLeagueName];
-    console.log(selectedRostersUsers)
 
     let selectedMatchups = sleeperMatchups.data.filter((league) => {
       return selectedLeagueName === league.leagueName;
@@ -107,7 +107,7 @@ function HomePage() {
           <WeekSelector />
           <FilterButtons
             className="homePageFilters"
-            buttons={sleeper_league_names}
+            buttons={sleeper_league_names[currentSeason]}
           />
 
           {content}
