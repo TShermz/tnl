@@ -83,8 +83,8 @@ export async function getSleeperPlayoffs(leagueId) {
 //Get Rosters (good for matching roster_id to owner_id)/standings
 
 export async function getAllRostersUsers() {
-  let sleeperRostersUsers = [];
-  let final = [];
+  let sleeperRostersUsers = {};
+  let final = {};
 
   try {
     for (const league of sleeper_league_ids) {
@@ -94,7 +94,7 @@ export async function getAllRostersUsers() {
       // sleeperRostersUsers.push({ leagueName: league.name, rosters, users });
       sleeperRostersUsers[league.name] = {rosters, users};
     }
-    final[2025] = sleeperRostersUsers;
+    final['2025'] = sleeperRostersUsers;
 
     return final;
   } catch (error) {

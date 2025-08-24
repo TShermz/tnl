@@ -171,7 +171,6 @@ export default function StandingsTable({ headCells, rostersUsers }) {
                 });
 
                 let selectedRostersUsers = rostersUsers[league[0].name];
-                console.log(selectedRostersUsers)
 
                 let managerNames = getManagerNames(
                   selectedRostersUsers.rosters,
