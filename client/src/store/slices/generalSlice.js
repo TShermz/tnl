@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { sleeper_league_ids } from "../../util/constants";
 
 const initialGeneralState = {
-  selectedLeagueName: "Jabronis",
+  selectedLeagueName: "Golden Goats",
   currentWeek: null,
-  currentSeason: 2024,
-  selectedWeek: 14,
+  currentSeason: 2025,
+  selectedWeek: 1,
   selectedSeason: null,
   selectedMatchups: {},
   selectedWeeklyAwards: [],
@@ -20,8 +20,7 @@ const generalSlice = createSlice({
       // state.currentSeason = action.payload.season;
 
       //sets selected week to current week upon load
-      // action.payload.display_week === 0 ? state.selectedWeek = 14 : state.selectedWeek = action.payload;
-
+      action.payload.display_week === 0 ? state.selectedWeek = 14 : state.selectedWeek = action.payload.display_week;
       state.selectedSeason = action.payload.season;
     },
     setSelectedLeague(state, action) {

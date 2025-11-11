@@ -298,5 +298,35 @@ export const managers = [
     photo: "", // square ratio recommended (no larger than 500x500)
     fantasyStart: 2024, // (optional) when did the manager start playing fantasy football
     favoriteTeam: "cle", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+  },
+  {
+    sleeperID: "996460592841928704",
+    currentLeagueID: 1,
+    roster_id: null,
+    name: "Mike M.",
+    bio: "Lorem ipsum...",
+    photo: "", // square ratio recommended (no larger than 500x500)
+    fantasyStart: 2025, // (optional) when did the manager start playing fantasy football
+    favoriteTeam: "phi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+  },
+  {
+    sleeperID: "1265398944817496064",
+    currentLeagueID: 1,
+    roster_id: null,
+    name: "Bob S.",
+    bio: "Lorem ipsum...",
+    photo: "", // square ratio recommended (no larger than 500x500)
+    fantasyStart: 2025, // (optional) when did the manager start playing fantasy football
+    favoriteTeam: "ne", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
+  },
+  {
+    sleeperID: "655248433107550208",
+    currentLeagueID: 1,
+    roster_id: null,
+    name: "Josie/Tim D.",
+    bio: "Lorem ipsum...",
+    photo: "", // square ratio recommended (no larger than 500x500)
+    fantasyStart: 2024, // (optional) when did the manager start playing fantasy football
+    favoriteTeam: "phi", // (optional) favorite NFL team, (follows convention: nyj, sea, mia, etc.) MUST BE LOWERCASE
   }
 ];
