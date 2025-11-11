@@ -323,7 +323,7 @@ export const managers = [
     sleeperID: "655248433107550208",
     currentLeagueID: 1,
     roster_id: null,
-    name: "Josie/Tim D.",
+    name: "Jolie/Tom D.",
     bio: "Lorem ipsum...",
     photo: "", // square ratio recommended (no larger than 500x500)
     fantasyStart: 2024, // (optional) when did the manager start playing fantasy football
